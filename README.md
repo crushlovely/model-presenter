@@ -1,13 +1,15 @@
-# Backbone Presenter
+# Model Presenter
 
-![https://travis-ci.org/createbang/backbone-presenter.png](https://travis-ci.org/createbang/backbone-presenter.png)
+![https://travis-ci.org/createbang/model-presenter.png](https://travis-ci.org/createbang/model-presenter.png)
 
 A lightweight model wrapper to prepare your data for the view layer.
 
 ## Example
 
 ```js
-var PersonPresenter = Backbone.Presenter.extend({
+var Presenter = require('model-presenter');
+
+var PersonPresenter = Presenter.extend({
 
   customAttributes: {
     fullName: function() {
@@ -34,24 +36,16 @@ var PersonPresenter = Backbone.Presenter.extend({
 
 })
 
-var Person = Backbone.Model.extend({
-
-  presenter: PersonPresenter
-
-, initialize: function() {
-    this.presenter.bind( this );
-  }
-
-})
-
-var person = new Person({
+var person = {
     image: 'image.jpeg',
     username: 'createbang',
     firstName: 'Michael',
     lastName: 'Phillips',
     ssn: '111-11-1111',
     memberSince: '2013-01-01'
-});
+};
+
+PersonPresenter.bind( person );
 
 person.present() // returns full representation of object including custom attributes
 person.present('avatar') // returns {image: 'image.jpeg', username: 'createbang', fullNameAllCaps: 'MICHAEL PHILLIPS'}
@@ -63,62 +57,27 @@ person.present('chat') // returns just the whitelisted keys
 
 ## Installation
 
-Extends the `Backbone` global with the constructor `Presenter`.
-
-via npm"
+via npm
 
 ```bash
-$ npm install backbone-presenter
+$ npm install model-presenter
 ```
 
+## Presenter Properties
 
-``` javascript
-var PersonPresenter = Backbone.Presenter;
-```
+Presenters constructors are defined as extensions of the base `Presenter` object, defining custom attributes or display strategies.
 
-## Usage
+Presenters have two primary properties:
 
-Backbone Presenters are defined as an attribute on the applicable model and are bound to the model in the initialize method:
+### customAttributes
 
-```js
-var Person = Backbone.Model.extend({
-
-  presenter: PersonPresenter,
-
-  initialize: function() {
-    this.presenter.bind( this );
-  }
-
-})
-```
-
-
-Backbone Presenters have two primary attributes.
-
-### attributes
-
-The `attributes` property allows you to specify presentation-only model values.
-
-```js
-var PersonPresenter = Backbone.Presenter.extend({
-
-  customAttributes: {
-    fullName: function() {
-      return this.attributes.firstName + ' ' + this.attributes.lastName;
-    },
-    fullNameAllCaps: function() {
-      return this.customAttribute('fullName').toUpperCase();
-    }
-  }
-
-})
-```
+The `customAttributes` property allows you to specify presentation-only model values.
 
 Each attribute is defined as a function.  The returned value will be used as the value of that attribute.  The scope for each function contains two properties:
 
-#### customAttributes
+#### attributes
 
-surfaces all properties of the native model (delegates to `model.toJSON()` to generate values).
+surfaces all properties of the native model (delegates to the `serializer` method, if defined, to generate values).
 
 #### customAttribute
 
@@ -127,35 +86,6 @@ A function that allows access to other custom attributes.  Takes the name of the
 ### strategies
 
 The `strategies` object allows you to define specific representation strategies for the presenter.  This lets the developer define a presentation for the model once and easily use it elsewhere in the application.
-
-```js
-var PersonPresenter = Backbone.Presenter.extend({
-
-  customAttributes: {
-    fullName: function() {
-      return this.attributes.firstName + ' ' + this.attributes.lastName;
-    },
-    fullNameAllCaps: function() {
-      return this.customAttribute('fullName').toUpperCase();
-    }
-  },
-
-  strategies: {
-    avatar: {
-      whitelist: ['image', 'username'],
-      customAttributes: ['fullNameAllCaps']
-    },
-    profile: {
-      blacklist: ['ssn'],
-      customAttributes: ['fullName']
-    },
-    chat: {
-      whitelist: ['image', 'username', 'memberSince']
-    }
-  }
-
-})
-```
 
 Each strategy accepts three properties:
 
@@ -171,6 +101,12 @@ An array of keys to omit from the original model data.
 
 An array of custom attribute keys to add to the resulting object
 
+## Model
+
+### present
+
+Binding the presenter constructor to the model exposes a `present` method on the model.  This method returns the resulting presenter attributes.  Takes an optional `strategy` string argument, using that strategy to build the resulting object.
+
 ## Contributing
 
 1. Fork it
@@ -182,6 +118,6 @@ An array of custom attribute keys to add to the resulting object
 ## Running tests
 
 ```bash
-npm install
-npm test
+$ npm install
+$ npm test
 ```

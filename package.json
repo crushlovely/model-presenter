@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "Make your model data presentable.",
   "author": {
-    "name": "Michael Phillips"
+    "name": "Michael Phillips",
+    "email": "mlp.brooklyn@gmail.com",
+    "url": "http://createbang.com/"
   },
   "main": "lib/model-presenter.js",
   "dependencies": {

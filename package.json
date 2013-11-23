@@ -1,0 +1,29 @@
+{
+  "name": "model-presenter",
+  "version": "0.0.1",
+  "description": "Make your model data presentable.",
+  "author": {
+    "name": "Michael Phillips"
+  },
+  "main": "lib/model-presenter.js",
+  "dependencies": {
+    "underscore": "1.5.2"
+  },
+  "devDependencies": {
+    "mocha": "",
+    "should": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/createbang/model-presenter.git"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/*.js"
+  },
+  "bugs": {
+    "url": "https://github.com/createbang/model-presenter/issues"
+  }
+}

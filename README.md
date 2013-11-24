@@ -53,7 +53,11 @@ person.present('profile') // returns all model data except ssn and adds fullName
 person.present('chat') // returns just the whitelisted keys
 ```
 
+## Adapters
 
+Presenters can be used out of the box, or you can use any of the adapters listed below for the framework you use:
+
+* [backbone-presenter](https://github.com/createbang/backbone-presenter) for [Backbone.js](https://github.com/jashkenas/backbone/)
 
 ## Installation
 

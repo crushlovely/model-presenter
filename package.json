@@ -5,7 +5,7 @@
   "author": {
     "name": "Crush & Lovely",
     "email": "admin@crushlovely.com",
-    "url": "http://crushlovely.com.com/"
+    "url": "http://crushlovely.com"
   },
   "main": "lib/model-presenter.js",
   "dependencies": {

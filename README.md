@@ -1,6 +1,6 @@
 # Model Presenter
 
-![https://travis-ci.org/createbang/model-presenter.png](https://travis-ci.org/createbang/model-presenter.png)
+![https://travis-ci.org/crushlovely/model-presenter.png](https://travis-ci.org/crushlovely/model-presenter.png)
 
 A lightweight model wrapper to prepare your data for the view layer.
 

@@ -3,9 +3,9 @@
   "version": "0.2.0",
   "description": "Make your model data presentable.",
   "author": {
-    "name": "Michael Phillips",
-    "email": "mlp.brooklyn@gmail.com",
-    "url": "http://createbang.com/"
+    "name": "Crush & Lovely",
+    "email": "admin@crushlovely.com",
+    "url": "http://crushlovely.com"
   },
   "main": "lib/model-presenter.js",
   "dependencies": {
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/createbang/model-presenter.git"
+    "url": "git://github.com/crushlovely/model-presenter.git"
   },
   "directories": {
     "test": "test"
@@ -26,6 +26,6 @@
     "test": "mocha test/*.js"
   },
   "bugs": {
-    "url": "https://github.com/createbang/model-presenter/issues"
+    "url": "https://github.com/crushlovely/model-presenter/issues"
   }
 }

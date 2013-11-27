@@ -1,6 +1,6 @@
 # Model Presenter
 
-![https://travis-ci.org/createbang/model-presenter.png](https://travis-ci.org/createbang/model-presenter.png)
+![https://travis-ci.org/crushlovely/model-presenter.png](https://travis-ci.org/crushlovely/model-presenter.png)
 
 A lightweight model wrapper to prepare your data for the view layer.
 
@@ -51,7 +51,11 @@ PersonPresenter.present( person, 'profile' ) // returns all model data except ss
 PersonPresenter.present( person, 'chat' ) // returns just the whitelisted keys
 ```
 
+## Adapters
 
+Presenters can be used out of the box, or you can use any of the adapters listed below for the framework you use:
+
+* [backbone-presenter](https://github.com/createbang/backbone-presenter) for [Backbone.js](https://github.com/jashkenas/backbone/)
 
 ## Installation
 

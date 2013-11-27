@@ -195,4 +195,35 @@ describe('model-presenter', function() {
 
   })
 
+
+
+
+
+  // // if the customAttributes property is not defined on the presenter object
+  describe('passing in a collection', function() {
+
+    beforeEach( function() {
+      data = PersonPresenter.present( [person, person, person] );
+    })
+
+
+    it('should return an object', function() {
+      data.should.be.an.Array
+    })
+
+    it('should return a collection', function() {
+      data.should.have.length(3)
+    })
+
+    it('has the right properties', function() {
+      var modelKeys = Object.keys( person );
+      var presenterKeys = Object.keys( PersonPresenter.customAttributes );
+
+      data[0].should.have.keys( modelKeys.concat( presenterKeys ) );
+      data[1].should.have.keys( modelKeys.concat( presenterKeys ) );
+      data[2].should.have.keys( modelKeys.concat( presenterKeys ) );
+    })
+
+  })
+
 });

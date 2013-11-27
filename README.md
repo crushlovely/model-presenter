@@ -99,11 +99,14 @@ An array of keys to omit from the original model data.
 
 An array of custom attribute keys to add to the resulting object
 
-## Model
+## present
 
-### present
+The Presenter class exposes a method `present` that accepts two arguments
 
-Binding the presenter constructor to the model exposes a `present` method on the model.  This method returns the resulting presenter attributes.  Takes an optional `strategy` string argument, using that strategy to build the resulting object.
+* `model`  a single model object.  This can also be an array of objects, or a collection
+* `strategy`  (optional) the presenter strategy to use
+
+The `present` method returns a raw JavaScript object (or array of objects) that have been converted through the presenter.
 
 ## Contributing
 

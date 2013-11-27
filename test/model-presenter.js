@@ -59,8 +59,6 @@ describe('model-presenter', function() {
     , ssn: '111-11-1111'
     };
 
-    PersonPresenter.bind( person );
-
     done();
 
   });
@@ -80,7 +78,7 @@ describe('model-presenter', function() {
     describe('with a whitelist strategy', function() {
 
       beforeEach( function() {
-        data = person.present('whitelisted');
+        data = PersonPresenter.present( person, 'whitelisted');
       })
 
 
@@ -97,7 +95,7 @@ describe('model-presenter', function() {
     describe('with a blacklist strategy', function() {
 
       beforeEach( function() {
-        data = person.present('blacklisted');
+        data = PersonPresenter.present( person, 'blacklisted');
       })
 
 
@@ -114,7 +112,7 @@ describe('model-presenter', function() {
     describe('with a complex strategy', function() {
 
       beforeEach( function() {
-        data = person.present('stationery');
+        data = PersonPresenter.present( person, 'stationery');
       })
 
 
@@ -142,7 +140,7 @@ describe('model-presenter', function() {
   describe('present without using a strategy', function() {
 
     beforeEach( function() {
-      data = person.present();
+      data = PersonPresenter.present( person );
     })
 
 
@@ -157,12 +155,12 @@ describe('model-presenter', function() {
   })
 
 
-  // if the strategies property is not defined on the presenter object
+  // // if the strategies property is not defined on the presenter object
   describe('without defined strategies', function() {
 
     beforeEach( function() {
       delete PersonPresenter.strategies;
-      data = person.present();
+      data = PersonPresenter.present( person );
     })
 
 
@@ -178,12 +176,12 @@ describe('model-presenter', function() {
   })
 
 
-  // if the customAttributes property is not defined on the presenter object
+  // // if the customAttributes property is not defined on the presenter object
   describe('without defined customAttributes', function() {
 
     beforeEach( function() {
       delete PersonPresenter.customAttributes;
-      data = person.present();
+      data = PersonPresenter.present( person );
     })
 
 

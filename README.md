@@ -45,12 +45,10 @@ var person = {
     memberSince: '2013-01-01'
 };
 
-PersonPresenter.bind( person );
-
-person.present() // returns full representation of object including custom attributes
-person.present('avatar') // returns {image: 'image.jpeg', username: 'createbang', fullNameAllCaps: 'MICHAEL PHILLIPS'}
-person.present('profile') // returns all model data except ssn and adds fullName custom attribute
-person.present('chat') // returns just the whitelisted keys
+PersonPresenter.present( person ) // returns full representation of object including custom attributes
+PersonPresenter.present( person, 'avatar' ) // returns {image: 'image.jpeg', username: 'createbang', fullNameAllCaps: 'MICHAEL PHILLIPS'}
+PersonPresenter.present( person, 'profile' ) // returns all model data except ssn and adds fullName custom attribute
+PersonPresenter.present( person, 'chat' ) // returns just the whitelisted keys
 ```
 
 

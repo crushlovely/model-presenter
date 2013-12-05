@@ -1,7 +1,8 @@
 var assert         = require('assert'),
     should         = require('should'),
     fs             = require('fs'),
-    Presenter      = require('../lib/model-presenter');
+    Presenter      = require('../lib/model-presenter'),
+    _              = require('underscore');
 
 
 
@@ -148,7 +149,7 @@ describe('model-presenter', function() {
 
     it('has the right properties', function() {
       var modelKeys = Object.keys( person );
-      var presenterKeys = Object.keys( PersonPresenter.customAttributes );
+      var presenterKeys = Object.keys( PersonPresenter.prototype.customAttributes );
 
       data.should.have.keys( modelKeys.concat( presenterKeys ) );
     })
@@ -159,7 +160,7 @@ describe('model-presenter', function() {
   describe('without defined strategies', function() {
 
     beforeEach( function() {
-      delete PersonPresenter.strategies;
+      delete PersonPresenter.prototype.strategies;
       data = PersonPresenter.present( person );
     })
 
@@ -168,7 +169,7 @@ describe('model-presenter', function() {
 
     it('has the right properties', function() {
       var modelKeys = Object.keys( person );
-      var presenterKeys = Object.keys( PersonPresenter.customAttributes );
+      var presenterKeys = Object.keys( PersonPresenter.prototype.customAttributes );
 
       data.should.have.keys( modelKeys.concat( presenterKeys ) );
     })
@@ -180,7 +181,7 @@ describe('model-presenter', function() {
   describe('without defined customAttributes', function() {
 
     beforeEach( function() {
-      delete PersonPresenter.customAttributes;
+      delete PersonPresenter.prototype.customAttributes;
       data = PersonPresenter.present( person );
     })
 
@@ -217,7 +218,7 @@ describe('model-presenter', function() {
 
     it('has the right properties', function() {
       var modelKeys = Object.keys( person );
-      var presenterKeys = Object.keys( PersonPresenter.customAttributes );
+      var presenterKeys = Object.keys( PersonPresenter.prototype.customAttributes );
 
       data[0].should.have.keys( modelKeys.concat( presenterKeys ) );
       data[1].should.have.keys( modelKeys.concat( presenterKeys ) );

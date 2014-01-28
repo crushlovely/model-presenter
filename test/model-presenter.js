@@ -1,5 +1,6 @@
 var assert         = require('assert'),
     should         = require('should'),
+    expect         = require('chai').expect,
     fs             = require('fs'),
     Presenter      = require('../lib/model-presenter'),
     _              = require('underscore');
@@ -70,6 +71,42 @@ describe('model-presenter', function() {
       data.should.be.type('object');
     })
   }
+
+  // presented using a strategy
+  describe('present with an empty object', function() {
+
+    beforeEach( function() {
+      data = PersonPresenter.present( {} );
+    });
+
+    it( 'should return a null object', function() {
+      data.should.be.empty;
+    })
+  })
+
+  // presented using a strategy
+  describe('present with a null model', function() {
+
+    beforeEach( function() {
+      data = PersonPresenter.present( null );
+    });
+
+    it( 'should return a null object', function() {
+      expect(data).to.be.null;
+    })
+  })
+
+  // presented using a strategy
+  describe('present with an undefined model', function() {
+
+    beforeEach( function() {
+      data = PersonPresenter.present( undefined );
+    });
+
+    it( 'should return a null object', function() {
+      expect(data).to.be.undefined;
+    })
+  })
 
   // presented using a strategy
   describe('present using a strategy', function() {

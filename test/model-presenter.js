@@ -72,6 +72,19 @@ describe('model-presenter', function() {
     })
   }
 
+  describe('present with a on-the-fly strategy', function() {
+
+    beforeEach( function() {
+      data = PersonPresenter.present( person, { customAttributes: ['fullName'], whitelist: ['lastName', 'ssn'] } )
+    })
+
+    it('should return the right properties', function() {
+      data.should.have.keys( ['fullName', 'lastName', 'ssn'] );
+      data.fullName.should.equal('John Smith');
+    })
+
+  })
+
   // presented using a strategy
   describe('present with an empty object', function() {
 

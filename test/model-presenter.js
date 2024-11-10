@@ -79,7 +79,11 @@ describe('model-presenter', function() {
     })
 
     it('should return the right properties', function() {
-      data.should.have.keys( ['fullName', 'lastName', 'ssn'] );
+      var allKeys = ['lastName', 'ssn', 'fullName'];
+
+      allKeys.forEach(function(key) {
+        expect(data).to.have.property(key);
+      });
       data.fullName.should.equal('John Smith');
     })
 
@@ -170,7 +174,11 @@ describe('model-presenter', function() {
       baseTests.call( this );
 
       it('has the right properties', function() {
-        data.should.have.keys( [ 'firstName', 'salutation', 'fullNameWithSalutation' ] );
+        var allKeys = ['firstName', 'salutation', 'fullNameWithSalutation'];
+
+        allKeys.forEach(function(key) {
+          expect(data).to.have.property(key);
+        });
       })
 
       it('should not have omitted properties', function() {
@@ -201,7 +209,11 @@ describe('model-presenter', function() {
       var modelKeys = Object.keys( person );
       var presenterKeys = Object.keys( PersonPresenter.prototype.customAttributes );
 
-      data.should.have.keys( modelKeys.concat( presenterKeys ) );
+      var allKeys = modelKeys.concat(presenterKeys);
+
+      allKeys.forEach(function(key) {
+        expect(data).to.have.property(key);
+      });
     })
   })
 
@@ -221,7 +233,11 @@ describe('model-presenter', function() {
       var modelKeys = Object.keys( person );
       var presenterKeys = Object.keys( PersonPresenter.prototype.customAttributes );
 
-      data.should.have.keys( modelKeys.concat( presenterKeys ) );
+      var allKeys = modelKeys.concat(presenterKeys);
+
+      allKeys.forEach(function(key) {
+        expect(data).to.have.property(key);
+      });
     })
 
   })
@@ -241,7 +257,9 @@ describe('model-presenter', function() {
     it('has the right properties', function() {
       var modelKeys = Object.keys( person );
 
-      data.should.have.keys( modelKeys );
+      modelKeys.forEach(function(key) {
+        expect(data).to.have.property(key);
+      });
     })
 
   })
@@ -269,10 +287,17 @@ describe('model-presenter', function() {
     it('has the right properties', function() {
       var modelKeys = Object.keys( person );
       var presenterKeys = Object.keys( PersonPresenter.prototype.customAttributes );
+      var allKeys = modelKeys.concat(presenterKeys);
 
-      data[0].should.have.keys( modelKeys.concat( presenterKeys ) );
-      data[1].should.have.keys( modelKeys.concat( presenterKeys ) );
-      data[2].should.have.keys( modelKeys.concat( presenterKeys ) );
+      allKeys.forEach(function(key) {
+        expect(data[0]).to.have.property(key);
+      });
+      allKeys.forEach(function(key) {
+        expect(data[1]).to.have.property(key);
+      });
+      allKeys.forEach(function(key) {
+        expect(data[2]).to.have.property(key);
+      });
     })
 
   })
